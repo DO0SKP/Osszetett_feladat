@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="main.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="eredmeny"></div>
+    <script>
+        fetch('/questions/all')
+            .then(response => response.json())
+            .then(data => console.log(data));
+
+        function kiiratas(lista) {
+            console.log(lista)
+            for (var i = 0; i < lista.length; i++) {
+                let ujelem = document.createElement("div");
+                ujelem.innerTEXT = lista[i];
+                document.getElementById("eredmeny").appendChild(ujelem);
+            }
+        }
+    </script>
+
+
+    <div id="külső">
+        <div id="kérdés_szöveg" class="fokerdes kerdesek_es_elore_hatra">Kérdés szövege</div>
+        <div id="középső">
+            <div id="válaszok">
+                <div id="válasz1" onclick="választás(1)" class="kerdesek_es_elore_hatra">Válasz1</div>
+                <div id="válasz2" onclick="választás(2)" class="kerdesek_es_elore_hatra">Válasz2</div>
+                <div id="válasz3" onclick="választás(3)" class="kerdesek_es_elore_hatra">Válasz3</div>
+            </div>
+            <div id="kép_elhelyezkedes">
+                <img  id="kép" src="https://kzgzdiag426.blob.core.windows.net/netcore/teszt-0050.jpg"  class="" alt="Ezegykep" />
+            </div>
+        </div>
+        <div id="vezérlő">
+            <div id="vissza_gomb" class="gomb kattintható kerdesek_es_elore_hatra">Vissza</div>
+            <div id="előre_gomb" class="gomb kattintható kerdesek_es_elore_hatra">Előre</div>
+        </div>
+    </div>
+    
+    
+    
+    <style>
+        div {
+            background-color:beige;
+            margin:10px;
+            font-family: 'Bodoni MT';
+            border-radius: 10px;
+        }
+        .kerdesek_es_elore_hatra {
+            border: 1px solid black;
+        }
+        #külső {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        #kérdés_szöveg{
+
+        }
+        #középső{
+            display: felx;
+            flex-direction: row;
+            flex-grow: 1;
+        }
+        #válaszok{
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+        .fokerdes {
+            font-size: large;
+            font-weight:600;
+        }
+        #vezérlő{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        #kép{
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 15px groove saddlebrown;
+            margin-top: 50px;
+            
+        }
+        #kép_elhelyezkedes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .gomb{
+            padding: 20px;
+            width: 80px;
+        }
+        .jó {
+            background-color: green;
+        }
+        .rossz {
+            background-color: red;
+        }
+        .rejtett {
+            visibility: hidden;
+        }
+        html,body {
+            height:100%;
+        }
+    </style>
+</body>
+</html>
